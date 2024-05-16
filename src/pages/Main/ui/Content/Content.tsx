@@ -16,13 +16,13 @@ export const Content = memo(() => {
     const { isIntersecting, measureRef } = useOnScreen();
 
     const [games, setGames] = useState<Game[]>([]);
-    const [loaded, setLoaded] = useState<number>(40);
+    const [loaded, setLoaded] = useState<number>(60);
 
     const gamesFilteredList = GameActionCreator.GetFilteredGames();
 
     useEffect(() => {
         if (isIntersecting) {
-            setLoaded((prevLoaded) => prevLoaded + 40);
+            setLoaded((prevLoaded) => prevLoaded + 60);
         }
     }, [isIntersecting]);
 
@@ -37,7 +37,7 @@ export const Content = memo(() => {
     }, [data, dispatch]);
 
     useEffect(() => {
-        setLoaded(40);
+        setLoaded(60);
     }, [gamesFilteredList]);
 
     return (
