@@ -3,9 +3,7 @@ import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { gameActions } from '@/store/reducers/game';
 import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
 import { GameType } from '@/store/reducers/game/types';
-import Appearance from '../../../../assets/Vector.svg';
-import Loop from '../../../../assets/loop.svg';
-import cls from './Header.module.scss';
+import { HeaderView } from './ui/HeaderView';
 
 export const Header = memo(() => {
     const dispatch = useTypedDispatch();
@@ -40,47 +38,13 @@ export const Header = memo(() => {
     // }, [debouncedSearch, dispatch]);
 
     return (
-        <>
-            <div className={cls.headerWrapper_left}>
-                <div className={cls.gameType}>Game Type</div>
-                <Appearance height={7} width={12} className={cls.arrow} />
-                <select
-                    value={gameType}
-                    className={cls.select}
-                    name="selectGame"
-                    id="selectGame"
-                    onChange={(e) => handleChangeGameType(e)}
-                >
-                    <option value={GameType.All}>All</option>
-                    <option value={GameType.VIDEO_SLOTS}>Video Slots</option>
-                    <option value={GameType.LIVE_GAMES}>Live games</option>
-                </select>
-            </div>
-            <div className={cls.headerWrapper_right}>
-                <p className={cls.search}>Search</p>
-                <div className={cls.searchWrapper}>
-                    <div className={cls.searchInput}>
-                        <Loop height={20} width={20} />
-                        <input
-                            onKeyDown={(e) => handleEnterPress(e)}
-                            value={search}
-                            onChange={(e) => handleChangeInput(e)}
-                            placeholder="Search"
-                            className={cls.input}
-                            type="text"
-                            name="searchInput"
-                            id="searchInput"
-                        />
-                    </div>
-                    <button
-                        onClick={handleSearchButton}
-                        className={cls.searchButton}
-                        type="button"
-                    >
-                        SEARCH
-                    </button>
-                </div>
-            </div>
-        </>
+        <HeaderView
+            handleChangeGameType={handleChangeGameType}
+            handleEnterPress={handleEnterPress}
+            handleChangeInput={handleChangeInput}
+            handleSearchButton={handleSearchButton}
+            gameType={gameType}
+            search={search}
+        />
     );
 });

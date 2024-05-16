@@ -2,7 +2,6 @@ import { memo, useEffect, useState } from 'react';
 import useOnScreen from '@/hooks/useOnScreen';
 import { useGetGamesQuery } from '@/store/reducers/game/api';
 import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
-
 import { gameActions } from '@/store/reducers/game';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { Game } from '@/store/reducers/game/types';
