@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { gameActions } from '@/store/reducers/game';
 import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
@@ -11,31 +11,25 @@ export const Header = memo(() => {
     const gameSearch = GameActionCreator.GetSearch();
     const [search, setSearch] = useState<string>(gameSearch);
 
-    // const debouncedSearch = useDebounce(search, 500);
-
-    const handleChangeGameType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChangeGameType = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
         dispatch(gameActions.setGameType(e.target.value as GameType));
         dispatch(gameActions.setSearch(''));
         setSearch('');
-    };
+    }, [dispatch]);
 
-    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
-    };
+    }, []);
 
-    const handleSearchButton = () => {
+    const handleSearchButton = useCallback(() => {
         dispatch(gameActions.setSearch(search));
-    };
+    }, [dispatch, search]);
 
-    const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleEnterPress = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleSearchButton();
         }
-    };
-
-    // useEffect(() => {
-    //     dispatch(gameActions.setSearch(debouncedSearch));
-    // }, [debouncedSearch, dispatch]);
+    }, [handleSearchButton]);
 
     return (
         <HeaderView

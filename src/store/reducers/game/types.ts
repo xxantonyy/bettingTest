@@ -4,13 +4,6 @@ export enum GameType {
    LIVE_GAMES = 'Live games',
 }
 
-export interface gamesSlice {
-   gameType: GameType,
-   search: string,
-   games: Game[],
-   filteredGames: Game[],
-}
-
 export interface Game {
    'gameID': string,
    'gameName': string,
@@ -23,6 +16,13 @@ export interface Game {
    'technologyID': string,
    'gameIdNumeric': number,
    'jurisdictions': string[],
+}
+
+export interface gamesSlice {
+   gameType: GameType,
+   search: string,
+   games: Game[],
+   filteredGames: Game[],
 }
 
 export interface Response {

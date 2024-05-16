@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import cls from './GamesList.module.scss';
 import { Game } from '@/store/reducers/game/types';
 import PlayLogo from '@/assets/mainPic.svg';
@@ -9,7 +10,7 @@ interface GamesListProps {
    measureRef: (node: Element) => void
 }
 
-export const GamesList = (props: GamesListProps) => {
+export const GamesList = memo((props: GamesListProps) => {
     const {
         games,
         isFetching,
@@ -51,4 +52,4 @@ export const GamesList = (props: GamesListProps) => {
             {!isFetching && !games?.length && <div>No results...</div>}
         </>
     );
-};
+});
