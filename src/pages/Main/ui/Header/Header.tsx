@@ -12,6 +12,7 @@ export const Header = memo(() => {
     const gameType = GameActionCreator.GetGameType();
     const gameSearch = GameActionCreator.GetSearch();
     const [search, setSearch] = useState<string>(gameSearch);
+
     // const debouncedSearch = useDebounce(search, 500);
 
     const handleChangeGameType = (e: React.ChangeEvent<HTMLSelectElement>) => {

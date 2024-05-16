@@ -31,6 +31,10 @@ export const Content = memo(() => {
     }, [gamesFilteredList, loaded]);
 
     useEffect(() => {
+        setLoaded(40);
+    }, [gamesFilteredList]);
+
+    useEffect(() => {
         if (data) {
             dispatch(gameActions.setGames(data?.result));
         }
