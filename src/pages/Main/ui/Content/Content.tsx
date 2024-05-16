@@ -6,7 +6,7 @@ import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { gameActions } from '@/store/reducers/game';
 import { useGetGamesQuery } from '@/store/reducers/game/api';
 import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
-import { GamesList } from './ui/GamesList';
+import { GamesList } from './ui/GameList/GamesList';
 
 export const Content = memo(() => {
     const dispatch = useTypedDispatch();
@@ -22,12 +22,16 @@ export const Content = memo(() => {
 
     useEffect(() => {
         if (isIntersecting) {
+            console.log('Loading more games');
             setLoaded((prevLoaded) => prevLoaded + 60);
         }
+    }, [isIntersecting]);
+
+    useEffect(() => {
         if (data) {
             dispatch(gameActions.setGames(data?.result));
         }
-    }, [data, dispatch, isIntersecting]);
+    }, [data, dispatch]);
 
     useEffect(() => {
         setLoaded(60);
