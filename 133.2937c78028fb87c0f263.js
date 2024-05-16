@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebpack_course=self.webpackChunkwebpack_course||[]).push([[133],{133:(e,c,s)=>{s.r(c),s.d(c,{default:()=>n});var u=s(294),r=s(250),a=s(893);const n=(0,u.memo)((function(){var e=(0,r.s0)();return(0,u.useEffect)((function(){e("/",{replace:!0})}),[e]),(0,a.jsx)("div",{})}))}}]);
+//# sourceMappingURL=133.2937c78028fb87c0f263.js.map
