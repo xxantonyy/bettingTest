@@ -1,0 +1,23 @@
+.Main {
+    height: 100vh;
+    background-color: var(--bg-color);
+    overflow-y: scroll;
+    color: white;
+    padding: 10px 20px;
+}
+
+.headerWrapper {
+    height: 80px;
+    display: flex;
+    gap: 10px;
+    max-width: 1880px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
+
+.contentWrapper {
+    max-width: 1880px;
+    margin: 0 auto;
+}

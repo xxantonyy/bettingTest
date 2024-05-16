@@ -1,0 +1,101 @@
+.headerWrapper_left {
+    position: relative;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    padding: 9px 20px 10px 20px;
+    height: 80px;
+    width: 1370px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.gameType {
+    width: 71px;
+    height: 30px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.select {
+    margin-left: 30px;
+    width: 140px;
+    height: 40px;
+    background-color: var(--main-color);
+    border: 1px solid var(--outline);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 10px 10px 20px;
+    outline: none;
+
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+}
+
+.arrow{
+    position: absolute;
+    pointer-events: none;
+    left: 230px;
+}
+
+
+.headerWrapper_right {
+    background-color: var(--main-color);
+    border-radius: 10px;
+    padding: 10px 10px 10px 20px;
+    height: 80px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search{
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+.searchWrapper{
+    margin-top: 5px;
+    display: flex;
+    height: 40px;
+}
+.searchInput{
+    display: flex;
+    width: 356px;
+    height: 40px;
+    padding: 10px 20px 10px 15px;
+    border: 1px solid var(--outline);
+}
+.input{
+    margin-left: 15px;
+    background-color: var(--main-color);
+    outline: none;
+    border: none;
+
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: white; 
+}
+.searchButton{
+    width: 94px;
+    height: 40px;
+    padding: 10px 20px 10px 20px;
+    margin-left: 10px;
+    background-color: #F0DA7D;
+    border: none;
+    cursor: pointer;
+
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    color: #1B020E;
+}

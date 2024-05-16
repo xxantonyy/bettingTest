@@ -1,0 +1,45 @@
+.contentHeader {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.text {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.cardWrapper {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px 20px;
+    margin-top: 10px;
+}
+
+.loadWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    height: 150px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px; 
+    text-align: left;
+}
+
+.gameName {
+    margin-top: 10px;
+}
+.image {
+    object-fit: cover;
+    width: 191px;
+    height: 118px;
+}
