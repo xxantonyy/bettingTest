@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Game, GameType, gamesSlice } from './types';
+import { filterGames } from './helpers/filterGames';
 
 const initialState: gamesSlice = {
     gameType: GameType.All,
@@ -15,23 +16,15 @@ export const gameSlice = createSlice({
     reducers: {
         setGames: (state, action: PayloadAction<Game[]>) => {
             state.games = action.payload;
-            state.filteredGames = action.payload;
+            state.filteredGames = filterGames(action.payload, state.gameType, state.search);
         },
-        setGameType: (state, action) => {
+        setGameType: (state, action: PayloadAction<GameType>) => {
             state.gameType = action.payload;
-            if (state.gameType === GameType.All) {
-                state.filteredGames = state.games.filter((game) => game.gameName.toLowerCase().includes(state.search.toLowerCase()));
-            } else {
-                state.filteredGames = state.games.filter((game) => game.typeDescription === state.gameType && game.gameName.toLowerCase().includes(state.search.toLowerCase()));
-            }
+            state.filteredGames = filterGames(state.games, state.gameType, state.search);
         },
-        setSearch: (state, action) => {
+        setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
-            if (state.gameType === GameType.All) {
-                state.filteredGames = state.games.filter((game) => game.gameName.toLowerCase().includes(state.search.toLowerCase()));
-            } else {
-                state.filteredGames = state.games.filter((game) => game.typeDescription === state.gameType && game.gameName.toLowerCase().includes(state.search.toLowerCase()));
-            }
+            state.filteredGames = filterGames(state.games, state.gameType, state.search);
         },
     },
 });

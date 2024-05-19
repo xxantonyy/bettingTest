@@ -5,8 +5,10 @@ import useOnScreen from '@/hooks/useOnScreen';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { gameActions } from '@/store/reducers/game';
 import { useGetGamesQuery } from '@/store/reducers/game/api';
-import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
+
 import { GamesList } from './ui/GameList/GamesList';
+import { getFilteredGames } from '@/store/reducers/game/services/action-creators';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 export const Content = memo(() => {
     const dispatch = useTypedDispatch();
@@ -16,13 +18,12 @@ export const Content = memo(() => {
 
     const [loaded, setLoaded] = useState<number>(60);
 
-    const gamesFilteredList = GameActionCreator.GetFilteredGames();
+    const gamesFilteredList = useTypedSelector(getFilteredGames);
 
     const displayedGames = useMemo(() => gamesFilteredList.slice(0, loaded), [gamesFilteredList, loaded]);
 
     useEffect(() => {
         if (isIntersecting) {
-            console.log('Loading more games');
             setLoaded((prevLoaded) => prevLoaded + 60);
         }
     }, [isIntersecting]);

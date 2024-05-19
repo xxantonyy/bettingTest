@@ -1,14 +1,16 @@
 import { memo, useCallback, useState } from 'react';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { gameActions } from '@/store/reducers/game';
-import { GameActionCreator } from '@/store/reducers/game/services/action-creators';
+
 import { GameType } from '@/store/reducers/game/types';
 import { HeaderView } from './ui/HeaderView';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { getGameType, getSearch } from '@/store/reducers/game/services/action-creators';
 
 export const Header = memo(() => {
     const dispatch = useTypedDispatch();
-    const gameType = GameActionCreator.GetGameType();
-    const gameSearch = GameActionCreator.GetSearch();
+    const gameType = useTypedSelector(getGameType);
+    const gameSearch = useTypedSelector(getSearch);
     const [search, setSearch] = useState<string>(gameSearch);
 
     const handleChangeGameType = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {

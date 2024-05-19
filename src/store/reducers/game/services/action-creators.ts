@@ -1,9 +1,14 @@
+import { createAction } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { Game, GameType } from '../types';
 
-export const GameActionCreator = {
-    GetSearch: () => useTypedSelector((state: RootState) => state.game.search),
-    GetGameType: () => useTypedSelector((state: RootState) => state.game.gameType),
-    GetGames: () => useTypedSelector((state: RootState) => state.game.games),
-    GetFilteredGames: () => useTypedSelector((state: RootState) => state.game.filteredGames),
-};
+// Action Creators
+export const setGames = createAction<Game[]>('gameSlice/setGames');
+export const setGameType = createAction<GameType>('gameSlice/setGameType');
+export const setSearch = createAction<string>('gameSlice/setSearch');
+
+// Selectors
+export const getSearch = (state: RootState) => state.game.search;
+export const getGameType = (state: RootState) => state.game.gameType;
+export const getGames = (state: RootState) => state.game.games;
+export const getFilteredGames = (state: RootState) => state.game.filteredGames;
